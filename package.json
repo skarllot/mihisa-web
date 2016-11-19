@@ -1,0 +1,41 @@
+{
+  "name": "mihisa-web",
+  "version": "0.1.0",
+  "description": "Allows to manage your own custom investment index",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --progress --colors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skarllot/mihisa-web.git"
+  },
+  "keywords": [
+    "investment",
+    "stock",
+    "index",
+    "quote",
+    "bank",
+    "statement",
+    "transfer",
+    "exchange"
+  ],
+  "author": "Fabrício Godoy",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/skarllot/mihisa-web/issues"
+  },
+  "homepage": "https://github.com/skarllot/mihisa-web#readme",
+  "devDependencies": {
+    "css-loader": "^0.26.0",
+    "html-webpack-plugin": "^2.24.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^0.17.0",
+    "webpack-validator": "^2.2.9"
+  },
+  "dependencies": {}
+}
