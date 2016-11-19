@@ -19,7 +19,7 @@ const common = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack demo'
+            template: 'app/index.pug'
         })
     ]
 };
@@ -31,19 +31,23 @@ switch (process.env.npm_lifecycle_event) {
         config = merge(
             common,
             { devtool: 'source-map' },
+            parts.setupPUG(PATHS.app),
+            parts.setupCSS(PATHS.app),
+            parts.setupJSON(PATHS.app),
             parts.setFreeVariable(
                 'process.env.NODE_ENV',
                 'production'
             ),
-            parts.minify(),
-            parts.setupCSS(PATHS.app)
+            parts.minify()
         );
         break;
     default:
         config = merge(
             common,
             { devtool: 'eval-source-map' },
+            parts.setupPUG(PATHS.app),
             parts.setupCSS(PATHS.app),
+            parts.setupJSON(PATHS.app),
             parts.devServer({
                 host: process.env.HOST,
                 port: process.env.port

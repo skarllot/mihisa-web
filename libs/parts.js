@@ -42,6 +42,20 @@ exports.devServer = function(options) {
   };
 };
 
+exports.setupPUG = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.pug$/,
+          loaders: ['pug'],
+          include: paths
+        }
+      ]
+    }
+  };
+};
+
 exports.setupCSS = function(paths) {
   return {
     module: {
@@ -49,6 +63,20 @@ exports.setupCSS = function(paths) {
         {
           test: /\.css$/,
           loaders: ['style', 'css?sourceMap'],
+          include: paths
+        }
+      ]
+    }
+  };
+};
+
+exports.setupJSON = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.json$/,
+          loaders: ['json-loader'],
           include: paths
         }
       ]

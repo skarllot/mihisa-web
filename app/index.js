@@ -1,4 +1,5 @@
-require('./main.css');
+'use strict';
 
-var component = require('./component');
-document.body.appendChild(component());
+require('./firebase');
+
+document.write('Nothing for now');
