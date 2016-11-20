@@ -31,9 +31,7 @@ switch (process.env.npm_lifecycle_event) {
         config = merge(
             common,
             { devtool: 'source-map' },
-            parts.setupPUG(PATHS.app),
-            parts.setupCSS(PATHS.app),
-            parts.setupJSON(PATHS.app),
+            parts.setupLoaders(PATHS.app),
             parts.setFreeVariable(
                 'process.env.NODE_ENV',
                 'production'
@@ -45,9 +43,7 @@ switch (process.env.npm_lifecycle_event) {
         config = merge(
             common,
             { devtool: 'eval-source-map' },
-            parts.setupPUG(PATHS.app),
-            parts.setupCSS(PATHS.app),
-            parts.setupJSON(PATHS.app),
+            parts.setupLoaders(PATHS.app),
             parts.devServer({
                 host: process.env.HOST,
                 port: process.env.port

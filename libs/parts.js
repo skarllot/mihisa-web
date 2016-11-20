@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-exports.devServer = function(options) {
+exports.devServer = function (options) {
   return {
     /*watchOptions: {
       // Delay the rebuild after the first change
@@ -42,49 +42,28 @@ exports.devServer = function(options) {
   };
 };
 
-exports.setupPUG = function(paths) {
+exports.setupLoaders = function (paths) {
   return {
     module: {
       loaders: [
+        { test: /\.css$/, loaders: ['style', 'css?sourceMap'], include: paths },
+        { test: /\.json$/, loaders: ['json-loader'], include: paths },
+        { test: /\.pug$/, loaders: ['pug'], include: paths },
+        { test: /\.scss$/, loaders: ['style', 'css', 'sass?sourceMap'] },
         {
-          test: /\.pug$/,
-          loaders: ['pug'],
-          include: paths
+          test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: "url?limit=10000"
+        },
+        {
+          test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+          loader: 'file'
         }
       ]
     }
   };
 };
 
-exports.setupCSS = function(paths) {
-  return {
-    module: {
-      loaders: [
-        {
-          test: /\.css$/,
-          loaders: ['style', 'css?sourceMap'],
-          include: paths
-        }
-      ]
-    }
-  };
-};
-
-exports.setupJSON = function(paths) {
-  return {
-    module: {
-      loaders: [
-        {
-          test: /\.json$/,
-          loaders: ['json-loader'],
-          include: paths
-        }
-      ]
-    }
-  };
-};
-
-exports.minify = function() {
+exports.minify = function () {
   return {
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
@@ -95,7 +74,7 @@ exports.minify = function() {
           drop_console: true
         },
         mangle: {
-          except: [ '$', 'webpackJsonp' ],
+          except: ['$', 'webpackJsonp'],
           screw_ie8: true,
           keep_fnames: false
         }
@@ -104,7 +83,7 @@ exports.minify = function() {
   };
 }
 
-exports.setFreeVariable = function(key, value) {
+exports.setFreeVariable = function (key, value) {
   const env = {};
   env[key] = JSON.stringify(value);
 
